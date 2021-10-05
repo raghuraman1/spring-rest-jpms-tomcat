@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     06-Oct-2021 12:24:08 AM                                                        
+
+     project    
+     description
+                   
+     AL1088                                                                
+     ====================================================================== -->
+<project name="project" default="default">
+    <description>
+            description
+    </description>
+
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="default" depends="clean" description="description">
+    	<mkdir dir="verify"/>
+    	<exec executable="./build-regular.bat"></exec>
+    	<unjar dest="verify\jarfile" src="java-modular-web-attempt\target\java-modular-web-attempt.jar"></unjar>
+    	<copy file="duplicate\target\classes\module-info.class" todir="verify\jarfile" overwrite="true"></copy>
+    	<jar compress="false" basedir="verify\jarfile" destfile="verify/badjar.jar" manifest="verify\jarfile\META-INF\MANIFEST.MF"/>
+    </target>
+
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: clean                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="clean">
+    	<delete dir="verify"/>
+    </target>
+
+</project>
