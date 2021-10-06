@@ -33,4 +33,13 @@ Stop the server.
 
 Currently having only .bat files.
 
+Note: This is a simple example. If the same is attempted with more dependencies the concepts are the same, one will have to resolve split packages and even exclude some dependencies in pom as needed.
+
+###Main Conclusion: 
+1. If we were to run the application using java -jar ie traditional fat jar way then we are really not leveraging java modules fully at runtime. During build time it certainly is being used. But not at actual runtime as we can see by comparing the console outputs and also by the bad jar experiment where we just replaced the module-info.class.
+2. If we want to leverage java modules we must launch using java -p or java --module-path and avoid fat jar as of now.
+
+
+
+
 
