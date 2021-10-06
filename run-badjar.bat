@@ -1,4 +1,3 @@
 call .\setenv.bat
-echo Ensure build.xml has been invoked and verify\badjar.jar exists
-pause
+call ant
 call java -jar verify\badjar.jar
